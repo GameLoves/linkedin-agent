@@ -1,0 +1,14 @@
+# Secrets and local runtime data must never be committed.
+.env
+data/
+*.db
+token.json
+
+# Python build and cache artifacts
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.venv/

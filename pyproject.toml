@@ -1,0 +1,31 @@
+# Project metadata and dependencies for the LinkedIn posting agent.
+# Install for development with:  pip install -e ".[dev]"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linkedin-agent"
+version = "0.1.0"
+description = "Drafts LinkedIn posts with Claude and publishes them through LinkedIn's official API after human approval."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic>=1.15,<2",      # Claude API SDK (drafting + vision)
+    "requests>=2.32,<3",       # HTTP client for LinkedIn REST API and Hacker News
+    "python-dotenv>=1.0,<2",   # Loads configuration from .env
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+linkedin-agent = "linkedin_agent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
